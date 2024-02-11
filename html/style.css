@@ -1,0 +1,291 @@
+@page {
+  size: A4;
+  margin: 0mm;
+}
+@font-face {
+  font-family: SourceSansPro;
+  src: url(SourceSansPro-Regular.ttf);
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  color: #0087C3;
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  top: 0.5cm;
+  width: 19cm; /*(21-0.5) */
+  height: 27.7cm; /*(29.7-0.5) */
+  margin: 0 auto; 
+  color: #000000;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+
+
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
+  
+}
+
+.backgroundhtml{
+  position: absolute;
+  left: -1cm;
+  top: -1cm;
+  z-index: -99;
+}
+
+header {
+  padding: 10px 0;
+  
+}
+
+#logo {
+  float: left;
+  margin-top: 8px;
+}
+
+#logo img {
+  height: 70px;
+}
+
+#company {
+  float: right;
+  text-align: right;
+}
+
+
+#details {
+  margin-bottom: 20px;
+}
+
+#client {
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;
+  float: right;
+  text-align: left;
+  margin-right: 130px;
+}
+
+#client .to {
+  color: #0087C3;
+  font-size: 1.2em;
+}
+
+
+#expedie {
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;
+  float: right;
+  text-align: left;
+  margin-right: 30px;
+}
+
+#expedie .to {
+  color: #0087C3;
+  font-size: 1.2em;
+}
+
+
+h2.name {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
+
+h3 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.invoice {
+  float: left;
+  text-align: left;
+}
+
+.invoice h1 {
+  color: #0087C3;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 10px 0;
+}
+
+.invoice .date {
+  font-size: 1.1em;
+  color: #000000;
+}
+
+.tableau {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 11px;
+}
+
+.tableau .blank{
+  border : 0;
+  background-color: #ffffff00
+}
+
+.tableau .jourferie{
+  background-color: #FFFFCC
+}
+
+.tableau .jouroff{
+  background-color: #FFC9C9
+}
+
+.tableau th,
+.tableau td {
+  padding: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+
+  /*border-bottom: 1px solid #FFFFFF;*/
+}
+
+.tableau th {
+  white-space: nowrap;        
+  font-weight: normal;
+  background-color: #ffffff;
+}
+
+table td {
+  text-align: left;
+
+}
+
+.tableau .nombre {
+  text-align: right;
+}
+
+.tableau .centre {
+  text-align: center;
+}
+
+.tableau .journumber {
+  border-left: 0;
+}
+
+.tableau .jour {
+  border-right: 0;
+  text-align: left;
+  padding-left: 14px;
+  padding-right: 0px;
+}
+
+.tableau td h3{
+  color: #57B223;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+.tableau .no {
+  color: #FFFFFF;
+  background: #57B223;
+}
+
+.tableau .desc {
+  text-align: left;
+}
+
+.tableau .unit {
+  background: #DDDDDD;
+}
+
+.tableau .qty {
+}
+
+.tableau .total {
+  background: #57B223;
+  color: #FFFFFF;
+}
+
+.tableau td.unit,
+.tableau td.qty,
+.tableau td.total {
+  font-size: 1.2em;
+}
+
+.tableau td {
+  border:1px solid black;
+  background-color: #F0FAF5;
+}
+
+.tableau th {
+  border:1px solid black;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  color: #2F8E5F;
+}
+
+.tableau tbody tr:last-child td {
+  /*border: none;*/
+}
+
+.tableau tfoot td {
+  padding: 10px 5px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap; 
+  /*border-top: 1px solid #AAAAAA; */
+}
+
+.tableau tfoot tr:first-child td {
+  /*border-top: none; */
+}
+
+.tableau .colone {
+  color: #57B223;
+  
+  border-top: 1px solid #57B223; 
+
+}
+
+.tableau tfoot tr td:first-child {
+  /*border: none;*/
+}
+
+#thanks{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+#notices{
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;  
+}
+
+#notices .notice {
+  font-size: 1.2em;
+}
+
+footer {
+  color: #000000;
+  width: 100%;
+  height: 7px;
+  position: absolute;
+  bottom: 0;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.tableau .partial {
+  background-color: #B8E7CF;
+  
+}

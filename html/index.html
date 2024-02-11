@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Facture SCT Corp</title>
+    <link rel="stylesheet" href="style.css" media="all" />
+    <script type="text/javascript" src="data.js"></script>
+  </head>
+  <body>
+    <div class="backgroundhtml">
+      <img style="width:21cm;height:30.5cm" src="background.png">
+    </div>
+    <span >
+      <header class="clearfix">
+        <div id="logo">
+          <div class="invoice">
+            <h1>FACTURE</h1>
+          </div>
+        </div>
+        <div id="company">
+          <table>
+            <tr>
+              <td><img style="height: 100px;" src="logo.png"></td>
+              <td>          
+                <h2 class="name" id="headercompanyName"></h2>
+                <div><span id="headercompanyAddress"></span><br>
+                     <span id="headercompanyZipCodeAndCity"></span>
+                </div>
+                <div><a id="headercompanyHREF"></a></div>
+                <div><span id="headercompanyPhone"></span></div></td>
+            </tr>
+          </table>
+        </div>
+        </div>
+      </header>
+      <main>
+        <div id="details" class="clearfix">
+          <div id="expedie">
+            <div class="to">Expedie à:</div>
+            <div class="address" id="clientExpedieName"></div>
+            <div class="address">
+                <span id="clientExpedieAddress"></span><br>
+                <span id="clientExpedieZipCodeAndCity"></span>
+            </div>
+            <div class="email" id="clientExpediePhoneNumber"></div>
+          </div>
+          
+          <div id="client">
+            <div class="to">Facturer à:</div>
+            <div class="address" id="clientFacturationName"></div>
+            <div class="address">
+                <span id="clientFacturationAddress"></span><br>
+                <span id="clientFacturationZipCodeAndCity"></span>
+            </div>
+            <div class="email" id="clientFacturationPhoneNumber"></div>
+          </div>
+
+          <div class="invoice">
+            <h2 style="margin:0">FCT-[[FACTURENB]]</h2>
+            <div class="date">[[FACTUREDATE]]</div>
+          </div>
+        </div>
+        <table class="tableau" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th class="">Mission</th>
+              <th class="" >Client</th>
+              <th class="client">Nb jours</th>
+              <th class="tjmht">TJM HT</th>
+              <th class="tva">TVA</th>
+              <th class="totalttc">TJM TTC</th>
+            </tr>
+          </thead>
+          <tbody>       
+            <tr>
+              <td class="centre">HERMES SI [AC-2023-512 [T1 - Prestation conseil] : Automatisation …</td>
+              <td class="mission centre">Hermès</td>
+              <td class="client centre">[[TOTALJOUR]]</td>
+              <td class="tjmht nombre">[[TJMHT]]</td>
+              <td class="tva centre">[[TAUXTVA]]</td>
+              <td class="totalttc nombre">[[TJMTTC]]</td>
+            </tr>
+            <tr class="blank">
+              <td colspan="6" class="blank" ></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="blank"></td>
+              <td colspan="2" class="jour">TOTAL HT</td>
+              <td class="nombre">[[TOTALHT]]</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="blank"></td>
+              <td colspan="2" class="jour" >TOTAL TVA 20%</td>
+              <td class="nombre">[[TOTALTVA]]</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="blank"></td>
+              <td colspan="2" class="jour">TOTAL TTC</td>
+              <td class="nombre">[[TOTALTTC]]</td>
+            </tr>
+          </tbody>
+        </table>
+        <span style="text-align:center"><h3>Détail du mois de [[MONTHNAME]]</h3></span>
+        <table  class="tableau" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th class="no">#</th>
+              <th class="" colspan="2" >Jour</th>
+              <th class="mission">Mission</th>
+              <th class="client">Client</th>
+              <th class="tjmht">TJM HT</th>
+              <th class="tva">TVA</th>
+              <th class="totalttc">TJM TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            [[LINESCONTENT]]
+            <tr>
+              <td colspan="4" class="blank"></td>
+              <td colspan="3" class="nombre">TOTAL TTC à régler </td>
+              <td class="nombre">[[TOTALTTC]]</td>
+            </tr>
+          </tbody>
+        </table>
+
+        
+        <div id="notices">
+          <div class="notice">Facture à régler avant le [[DATEREGLEMENT]]</div>
+        </div>
+      </main>
+      <footer>
+        <span id="footercompanyName"></span> – SIREN : <span id="footercompanySiren"></span><br>
+        SAS au capital de <span id="footercompanyCapital"></span> euros, RCS Bobigny <span id="footercompanySirenDeux"></span> N°TVA Intracom <span id="footercompanyTVAIntracom"></span><br>
+        <span id="footercompanyAddress"></span>, <span id="footercompanyZipCodeAndCity"></span> - <a id="footercompanyHREF" href=""></a><br>
+        <span id="footercompanyPhone"></span> – <span id="footercompanyEmail"></span>
+      </footer>
+    </span>
+
+    <script type="text/javascript">
+      window.onload = onLoadFunctions;
+    </script>
+  </body>
+</html>
