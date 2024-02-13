@@ -1,3 +1,5 @@
+import sys
+
 import datetime
 from datetime import timedelta, date
 import calendar
@@ -5,68 +7,42 @@ import locale
 import os
 from pyhtml2pdf import converter
 from jours_feries_france import JoursFeries
+import json
+
+
+
+
 
 askChargeJourFerie = True
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-month_array = { "day" : [], "total_working_days":0, "tjmht": -1, "tjmttc": -1, "date_voulue":datetime.date.today(), "total_worked":0, "total_ht":-1, "total_tva":-1, "total_ttc":-1, "taux_tva":0.2}
+
+#month_array = {"month": 2,"year": 2024, "day" : [], "total_working_days":0, "tjmht": -1, "tjmttc": -1, "date_voulue":datetime.date.today(), "total_worked":0, "total_ht":-1, "total_tva":-1, "total_ttc":-1, "taux_tva":0.2}
+json_acceptable_string = sys.argv[1].replace("'", "\"")
+month_array = json.loads(json_acceptable_string)
+
+month_array["date_voulue"]=datetime.date.today()
+
 print(month_array)
 
-year = 0
-month = 0
-while((year == 0) and (month == 0)):
-    print("\nSaisisez le mois et l'année de la facture [MM/YYYY]: \n   ex: 01/2024")
-    val = input()
-    try:
-        month = int(val.split("/")[0])
-        year = int(val.split("/")[1])
-    except:
-        month = 0
-        year = 0
-        print("Erreur lors de la saisie, de nouveau")
+year = month_array["year"]
+month = month_array["month"]
 
-
-#print('Enter Taux TVA:')
-#month_array["taux_tva"] = float(input())
-
-weeks = calendar.monthcalendar(year, month)
-
-for week in weeks:
-    for i in range(len(week)):
-        if( (week[i] > 0) and (i < 5) ):
-            month_array["day"].append({"dayname" : calendar.day_name[i], "number" : week[i], "day_type" : -99, "cumulative_sum" : 0})
-            month_array["total_working_days"] = month_array["total_working_days"] + 1
-
-
-
-print('\nSaisisez le TJM HT en €:')
-month_array["tjmht"] = float(input())
 month_array["tjmttc"] = month_array["tjmht"] + month_array["tjmht"]  * month_array["taux_tva"] 
 
 
-print('\nSaisie des données:\n   Jour férié :\t\t-1\n   Non travaillé:\t0\n   Demi-journée:\t0.5\n   Jour complet:\t1\n')
 for i in range(len(month_array["day"])) :
     
-    print('- Charge du jour : ' + month_array["day"][i]["dayname"].capitalize() +' '+ str(month_array["day"][i]["number"]) +' ' +  calendar.month_name[month].capitalize() +' ' + str(year))
-    if(not JoursFeries.is_bank_holiday(datetime.date(year, month, month_array["day"][i]["number"]), zone="Métropole")):
-        temp = input()
-    elif(askChargeJourFerie):
-        temp = input()
-    else:
-        print('   > Jour ferié ('+JoursFeries.next_bank_holiday(datetime.date(year, month, month_array["day"][i]["number"]), zone="Métropole")[0]+'): charge saisie automatiquement : 0\n')
-        temp = -1
+    temp = month_array["day"][i]["day_type"] 
 
     try:
         if(float(temp) > 0):
-            month_array["day"][i]["day_type"] = float(temp)
             month_array["day"][i]["cumulative_sum"] = month_array["total_worked"]  + float(temp)
             month_array["total_worked"] = month_array["total_worked"]  + float(temp)
         else:
-            month_array["day"][i]["day_type"] = temp
             month_array["day"][i]["cumulative_sum"] = month_array["total_worked"]
     except:
-        month_array["day"][i]["day_type"] = temp
         month_array["day"][i]["cumulative_sum"] = month_array["total_worked"]
 
 month_array["total_ht"] = month_array["total_worked"] * month_array["tjmht"] 
@@ -162,5 +138,3 @@ converter.convert(f'file:///{path}', 'Facture ' +calendar.month_name[month].capi
 
 print("> OK" )
 print("Fichier generé :" + 'Facture ' +calendar.month_name[month].capitalize()+ ' ' +str(int(year)) + '.pdf')
-
-input("Press Enter to continue...")
