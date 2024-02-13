@@ -138,6 +138,7 @@ with open('html\\index.html', 'r', encoding="utf-8") as file:
     data = file.read()
 
 data = data.replace("[[MONTHNAME]]", calendar.month_name[month].capitalize())
+data = data.replace("[[YEAR]]", str(year))
 data = data.replace("[[FACTUREDATE]]", month_array["date_voulue"].strftime("%d/%m/%Y"))
 data = data.replace("[[DATEREGLEMENT]]", (month_array["date_voulue"] + timedelta(days=30)).strftime("%d/%m/%Y"))
 data = data.replace("[[LINESCONTENT]]", all_lines)
